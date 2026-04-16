@@ -8,15 +8,16 @@ export interface IMessage extends Document{
     updatedAt : Date
 }
 
-const MessageSchema = new Schema({
+const MessageSchema = new Schema<IMessage>({
     chat:{
-        type: mongoose.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: "Chat",
         required: true,
     },
     sender:{
-        type: mongoose.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: "User",
+        required:true,
     },
     text:{
         type: String,
